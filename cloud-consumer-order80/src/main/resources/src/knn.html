@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KNN</title>
+</head>
+
+<body>
+<canvas id="canv" style="border: 1px #000 solid;"></canvas>
+<!-- 当前点 -->
+<span id="point"></span>
+<input type="color" id="clrDom" value="#80ff00" />
+<input type="number" id="KKKKK" placeholder="3" />
+<script src="KNN.js"></script>
+<script>
+    var dataSet = [];
+    var drawMousePoint = false;
+    var canvas = document.getElementById("canv");
+    var clrDom = document.getElementById("clrDom");
+    var KKKKK = document.getElementById("KKKKK");
+    var cxt = canvas.getContext("2d");
+    var color = "#80ff00";
+    // 画布的长宽
+    canvas.width = 600;
+    canvas.height = 300;
+    function getEvPoint(e) {
+        // console.log(e);
+        return { x: e.offsetX, y: e.offsetY };
+    }
+    function onMouseOut(e) {
+        if (!drawMousePoint)  return;
+        drawMousePoint = false;
+    }
+    function onMouseMove(e) {
+        // 鼠标移动事件调用函数draw，计算距离并排序，取其中最接近的k个
+        drawMousePoint = true;
+        clear();
+        draw(e);
+    }
+    function clickCanv(e) {
+        var p = getEvPoint(e);
+        dataSet.push({
+            point: p,
+            color: color
+        });
+    }
+    function draw(e) {
+        var p = getEvPoint(e);
+        var r = null;
+        if (dataSet.length) {
+            r = classify0(p, dataSet, 'point', 'color', parseInt(KKKKK.value) || 3,function(p1, p2){
+                //根据欧几里得距离公式或勾股定理计算距离
+                var d = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+                return d;
+            });
+            // console.log(r);
+        }
+        if (e) {
+            cxt.beginPath();
+            cxt.arc(p.x, p.y, 8, 0, 2 * Math.PI, false);
+            // 定义最初点的颜色
+            cxt.fillStyle = r && r.result ? r.result : '#efefef';
+            // 连接点
+            cxt.stroke();
+            cxt.fill();
+            // 在页面上显示当前坐标
+            document.getElementById("point").innerHTML = "(" + p.x + "," + p.y + ")";
+            document.getElementById("point").style.color = cxt.fillStyle;
+        }
+        for (var i of dataSet) {
+            // 描绘训练集的点
+            cxt.beginPath();
+            cxt.lineWidth = 1;
+            cxt.arc(i.point.x, i.point.y, 4, 0, 2 * Math.PI, false);
+            cxt.fillStyle = i.color;
+            cxt.stroke();
+            cxt.fill();
+        }
+        if (r) {
+            // 连接点的线段
+            for (var i of r.dists) {
+                cxt.beginPath();
+                cxt.lineWidth = 1;
+                cxt.moveTo(p.x, p.y);
+                cxt.lineTo(i.p.point.x, i.p.point.y);
+                cxt.stroke();
+                cxt.fill();
+            }
+        }
+    }
+    function changeColor() {
+        color = this.value;
+    }
+    function clear() {
+        cxt.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    canvas.addEventListener('click', clickCanv, false);
+    canvas.addEventListener('mousemove', onMouseMove, false);
+    canvas.addEventListener('mouseout', onMouseOut, false);
+    clrDom.addEventListener('change', changeColor, false);
+</script>
+</body>
+
+</html>
+

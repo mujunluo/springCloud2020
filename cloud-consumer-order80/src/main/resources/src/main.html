@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>系统</title>
+</head>
+<style>
+    html,body,ul{margin: 0;padding: 0;}
+    li{list-style: none}
+    input{outline: none;background: none}
+    /*input:focus{border: none;}*/
+    .header{border-bottom: 1px #c2c2c2 solid;padding: 0 15px;display: flex;justify-content:space-between;padding:15px;align-items:center;}
+    .headLeft{flex-wrap:wrap;display: flex;align-items:center;}
+    .img{display: inline-block;width:80px;height:80px;border-radius: 100%;margin-top: 0;margin-bottom: 0}
+    .img img{width:80px;height: auto;}
+    .messagesP{display: inline-block;}
+    .messagesP li{float: left;display: inline-block;margin-left: 15px;border-right:1px solid #c2c2c2;padding-right: 15px;line-height: 12px}
+    .messagesP li:last-child{border:none}
+    .exitBox li{display: inline-block;float:left;margin-left: 15px;border-right:1px solid #c2c2c2;padding-right: 15px;line-height: 12px;cursor: pointer}
+    .exitBox li:last-child{border:none}
+    .main{display: flex;box-sizing: border-box;}
+    .left{width: 10%;border-right: 1px solid #c2c2c2;}
+    .left ul li{border-bottom: 1px solid #c2c2c2;border-bottom: 1px solid #c2c2c2;box-sizing:border-box;padding-left: 15px;}
+    .right{width: 90%;box-sizing: border-box;padding-left:15px;padding-right: 15px;}
+    .messages{display: flex;align-items: center;justify-content: space-between}
+    .messages input{width: 200px;border: 1px solid #c2c2c2;border-radius: 3px;box-sizing: border-box;padding: 5px;}
+    .list h5{font-weight: 500;font-size: 14px;margin:10px 0}
+    .list li{margin: 10px 0}
+    .markBox{position: fixed;top:0;left:0;bottom:0px;width:100%;background: rgba(0,0,0,.5);overflow: auto;box-sizing: border-box;padding-top: 20px;padding-bottom: 20px;}
+    .boxMain{position: absolute;top:20px;left:50%;-webkit-transform: translateX(-50%);background: #fff;border-radius: 5px;/*height: 400px;*/width:80%;box-sizing: border-box;
+        padding: 20px;}
+    .boxMain p{}
+    .close{float: right;margin-right: 20px;cursor: pointer}
+    .det{display: inline-block;width: 40px;height: 40px;border-radius: 100%;background: #fff;color: #000;font-size: 26px;text-align: center;line-height: 40px;}
+    .boxMain img{width: 100%;height: auto;margin: 0 auto}
+
+
+    .clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+</style>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="headLeft">
+            <p class="img"><img src="icon.jpg" alt="用户头像"/> </p>
+            <ul class="messagesP">
+                <li>姓名：张某某</li>
+                <li>姓名：24周岁</li>
+            </ul>
+        </div>
+        <div class="headRight">
+            <ul class="exitBox clearfix">
+                <li>回到首页</li>
+                <li>登出</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="names" style="display: none;">
+        <p class="btnP">今天就诊患者列表</p>
+        <ul style="display: none"><!--style="display: none"-->
+            <li>赵三</li>
+            <li>赵四</li>
+            <li>赵铁夫</li>
+            <li>王五</li>
+            <li>司马光达</li>
+            <li>六六</li>
+            <li>小娟娟</li>
+            <li>赵三啊</li>
+            <li>赵三次</li>
+            <li>赵阿</li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="left">
+            <ul>
+                <li class="lists clearfix">
+                    <p class="titleP">病历查询</p>
+                </li>
+                <li class="lists clearfix">
+                    <p class="titleP">药物查询</p>
+                </li>
+                <li class="lists clearfix">
+                    <p class="titleP">检查单查询</p>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="messages">
+                <p>时间：<input placeholder="请输入" /></p><p>科室：<input placeholder="请输入" /></p><p>有无检查结果：<input placeholder="请输入"></p>
+            </div>
+            <ul class="list">
+                <h5>最近20条病历列表</h5>
+                <li>2020年04月01日 耳鼻喉科 慢性中耳炎</li>
+                <li>2020年03月19日 消化内科 主诉：胃偶见灼烧感，消化不良</li>
+                <li>2020年03月01日 耳鼻喉科 慢性中耳炎</li>
+                <li>2020年02月10日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年12月17日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年12月01日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年11月12日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年11月10日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年10月13日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年10月01日 耳鼻喉科 慢性中耳炎</li>
+                <li>2020年04月01日 耳鼻喉科 慢性中耳炎</li>
+                <li>2020年03月19日 消化内科 主诉：胃偶见灼烧感，消化不良</li>
+                <li>2020年03月01日 耳鼻喉科 慢性中耳炎</li>
+                <li>2020年02月10日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年12月17日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年12月01日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年11月12日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年11月10日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年10月13日 耳鼻喉科 慢性中耳炎</li>
+                <li>2019年10月01日 耳鼻喉科 慢性中耳炎</li>
+            </ul>
+        </div>
+    </div>
+    <div class="markBox"><!--style="display: none;"-->
+        <p class="close"><span class="det">╳</span> </p>
+        <div class="boxMain">
+            <p>此处为病历详情...</p>
+            <p>此处为药物使用情况...</p>
+            <p>血常规检查结果：<img src="icon1.jpg" alt="检查结果单"/></p>
+            <p>心电图检查结果：<img src="icon2.png" alt="检查结果单"/></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
