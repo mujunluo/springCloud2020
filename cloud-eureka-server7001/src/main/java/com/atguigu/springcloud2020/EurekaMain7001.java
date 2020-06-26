@@ -14,6 +14,7 @@ public class EurekaMain7001 {
 
         SpringApplication.run(EurekaMain7001.class,args);
     }
-    // 创建 一个dev分支测试
+    // 创建 一个dev分  支测试
     // 在dev的基础上创   建测试分支  test
+    // 7777777
 }
