@@ -1,9 +1,9 @@
 server:
-  port: 7001    #浏览器输入localhost:7001
+  port: 7002    #浏览器输入localhost:7001
 
 eureka:
   instance:
-    hostname: eureka7001.com #eureka服务端的实例名称  在host文件中已经配置了eureka7001.com 就是localhost
+    hostname: eureka7002.com #eureka服务端的实例名称  在host文件中已经配置了eureka7002.com 就是localhost
   client:
     #false表示不向注册中心注册自己
     register-with-eureka: false
@@ -12,5 +12,5 @@ eureka:
     service-url:
       #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址
       # 集群7001上配7002 ，7002上配7001 相互注册
-      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7002.com:7002/eureka/
+      defaultZone: http://eureka7003.com:7003/eureka/,http://eureka7001.com:7001/eureka/
       #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

@@ -12,7 +12,8 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 public class OrderController {
-    private static final String PAYMENT_URL="http://localhost:8001";
+    // private static final String PAYMENT_URL="http://localhost:8001"; 单机
+    private static final String PAYMENT_URL="http://CLOUD-PROVIDER-SERVICE"; // 集群不在就是ip跟端口了，而是服务提供者对外暴露的微服务名称
     @Resource
     private RestTemplate restTemplate;
 
