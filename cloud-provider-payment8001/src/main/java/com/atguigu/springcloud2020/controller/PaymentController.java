@@ -46,26 +46,4 @@ public class PaymentController {
             return new CommonResult(444,"没有对应记录,查询ID："+id,null);
         }
     }
-    @GetMapping(value = "/payment/discovery")
-    public DiscoveryClient a(){
-        List<String> services = discoveryClient.getServices();
-        for (String service:services){
-            log.info(service);
-        }
-        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PROVIDER-SERVICE");
-        for (ServiceInstance serviceInstance:instances){
-            log.info(serviceInstance.getHost()+"--"+serviceInstance.getPort()+"---"+serviceInstance.getUri());
-        }
-        return discoveryClient;
-    }
-
-    @GetMapping(value = "/payment/timeOut")
-    public String timeOut(){
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return  serverPort;
-    }
 }

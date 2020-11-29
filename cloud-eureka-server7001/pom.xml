@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <artifactId>module cloud-eureka-server7001</artifactId>
+    <artifactId>cloud-eureka-server7001</artifactId>
 
     <dependencies>
         <!--eureka server-->

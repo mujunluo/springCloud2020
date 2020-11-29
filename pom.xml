@@ -12,12 +12,6 @@
         <module>cloud-provider-payment8001</module>
         <module>cloud-consumer-order80</module>
         <module>cloud-eureka-server7001</module>
-        <module>cloud-eureka-server7002</module>
-        <module>cloud-eureka-server7003</module>
-        <module>cloud-provider-payment8002</module>
-        <module>cloud-consumer-feign-order80</module>
-        <module>cloud-provider-Hystrix-payment8001</module>
-        <module>cloud-consumer-fegin-Hystrix-order80</module>
     </modules>
     <packaging>pom</packaging>
     <!--统一管理jar包版本-->

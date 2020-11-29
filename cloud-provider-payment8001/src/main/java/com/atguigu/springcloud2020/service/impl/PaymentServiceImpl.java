@@ -12,13 +12,15 @@ import javax.annotation.Resource;
 @Transactional
 public class PaymentServiceImpl implements PaymentService {
     @Resource
-
     private PaymentDao paymentDao;
 
     public int create(Payment payment){
-        return paymentDao.create(payment);
+        return 1;
     }
     public Payment getPaymentById(Long id){
-        return paymentDao.getPaymentById(id);
+        Payment payment = new Payment();
+        payment.setId(1l);
+        payment.setSerial("11111111111111111");
+        return payment;
     }
 }

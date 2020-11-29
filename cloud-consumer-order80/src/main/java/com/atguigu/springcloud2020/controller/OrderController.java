@@ -4,10 +4,7 @@ import com.atguigu.springcloud2020.entities.CommonResult;
 import com.atguigu.springcloud2020.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
@@ -15,14 +12,13 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 public class OrderController {
-    //单机版写死是没有问题的，但是现在有8001、8002了，所有不应该再关注具体的IP和端口，而是只认服务名称
-    //private static final String PAYMENT_URL="http://localhost:8001";  单机版
-    private static final String PAYMENT_URL="http://CLOUD-PROVIDER-SERVICE";  //集群版   地址为提供者服务名称
+    private static final String PAYMENT_URL="http://localhost:8001";
     @Resource
     private RestTemplate restTemplate;
 
+
     @PostMapping("/consumer/payment/create")
-    public CommonResult<Payment> create(Payment payment){
+    public CommonResult<Payment> create(@RequestBody Payment payment){
         return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment,CommonResult.class);
     }
 
